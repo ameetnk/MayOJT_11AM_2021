@@ -1,0 +1,24 @@
+Implementation steps for Google Captcha
+
+Steps
+1 install lib
+npm i ngx-captcha
+
+2 Install its dependancy lib. also
+npm i tslib   //# TypeScript 3.9.2 or later
+or 
+npm install tslib@^1  //typescript version # TypeScript 3.8.4 or earlier
+
+3 Import module NgxCaptchaModule and ReactiveFormsModule
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { ReactiveFormsModule } from '@angular/forms';
+
+4 Open login.component.html
+paste the inbild tag
+<ngx-recaptcha2 #captchaElem
+   [siteKey]="siteKey" >
+</ngx-recaptcha2>
+
+5 open browser & type google captcha it shows google recaptcha,it is used to get sitekey from google for that your gmail should be login
+https://www.google.com/recaptcha/admin/create
+Fill the registration form after filling form you will get site key add this site key 

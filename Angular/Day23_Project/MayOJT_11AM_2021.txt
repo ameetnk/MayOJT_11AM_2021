@@ -1,0 +1,143 @@
+
+Last Lecture
+1  Reactive form 
+
+Today's Lecture
+
+1 Project
+
+1 getAllcountry
+2 
+
+Login API
+
+DB related
+Register
+id=> auto_increment
+name => varchar (50)
+username => varchar (50)
+emailid	=> varchar (250) => unique
+phoneno => varchar (20)
+gender => varchar (15)
+address => varchar (250)
+password = > varchar (100)
+CreatedDt => Timestamp
+
+pojo=>register
+
+1  controller class
+
+	//@RequestMapping(value="/logincheck",method=RequestMethod.post)
+	@PostMapping("/logincheck")
+	public Hashmap Login(@RequestBody Register reg){
+		
+		Hashmap map=service.LoginCheck(reg)		
+		
+		return (map);
+	}
+
+Service Class
+		public Hashmap LoginCheck(Register reg){
+			
+			Register user=dao.LoginCheck(reg);
+			
+			Hashmap map=new Hashmap();
+			
+			if(user==null){
+				map.put("msg","Invalid User");
+				map.put("user",user);			
+			}else{
+				map.put("msg","valid user");
+				map.put("user",user);
+			}		
+			
+			
+			return (map);
+		}
+
+Dao Class
+	
+	public Register  LoginCheck(Register reg){
+	
+		// Create session factory
+			Criteria criteria=session.getcriteria;
+			criteria.addResctriction(reg.getEmailid());
+			criteria.addResctriction(reg.getPassword());
+			Register myreg=criteria.uniqueResult();
+			
+			return myreg;			
+	
+	}
+	
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+

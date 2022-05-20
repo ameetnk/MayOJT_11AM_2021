@@ -1,0 +1,19 @@
+
+.success{
+    color: green;    
+}
+
+.danger{
+    color: red;
+}
+.warning{
+    color: yellowgreen;
+}
+.special{
+    font-style: italic;
+    font-family: 'cursive';
+    font-size: 32px;
+    background: turquoise;
+    padding: 12px;
+    margin-top: 32px;
+}

@@ -1,0 +1,44 @@
+<p>post works!</p>
+
+<label for="">Title:: &nbsp;</label>
+<input #inputTitle type="text" placeholder="Enter the title.."><br><br>
+
+<label for="">Body:: &nbsp;</label>
+<input #inputBody type="text" placeholder="Enter the Body.."><br><br>
+
+<button class="mybtn" (click)="OnSend(inputTitle.value,inputBody.value)">Send</button>
+
+<hr>
+<div [hidden]="ishidden">
+    <label for="">ID::&nbsp;</label>
+    <input type="text" [(ngModel)]="id" readonly
+    placeholder="Id..."> <br><br>
+    <label for="">Title::&nbsp;</label>
+    <input type="text" [(ngModel)]="title"
+     placeholder="Enter the Title..."> <br><br>
+    <label for="">Body::&nbsp;</label>
+    <input type="text" [(ngModel)]="body"
+    placeholder="Enter the Body..."> <br><br>
+    <button class="mybtn" (click)="onUpdate()">Update</button>
+</div>
+<hr>
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Action</th>
+        <th>Title</th>
+        <th>Body</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of PostArr">
+            <td > {{item.id}} </td>
+            <td> <button class="mybtn" (click)="onEdit(item)">Edit</button>
+                <button class="mybtn" (click)="OnDelete(item.id)"
+                id="btnDelete">Delete</button>
+            </td>
+            <td> {{item.title}} </td>
+            <td> {{item.body}} </td>
+        </tr>
+    </tbody>
+</table>
+

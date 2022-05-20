@@ -1,0 +1,59 @@
+
+
+<div class="container">
+    <p>demo-tdf works!</p>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+            <form #f="ngForm" >
+
+                {{f.value|json}}
+
+                <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" class="form-control" 
+                    minlength="5"
+                    pattern="admin"
+                    ngModel name="myusername" #username="ngModel"
+                    placeholder="Enter the Username..." required>
+
+                    <div class="alert alert-danger"
+                        *ngIf="username.touched && !username.valid"> 
+                        ** Please Enter the Username...
+                        <div *ngIf="username.errors.minlength">
+                            ** Please Enter the username minimumn 
+                            {{username.errors.minlength.requiredLength}} character
+                        </div>
+                        <div *ngIf="username.errors.pattern">
+                            ** Please Enter  the Appropriate pattern...
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="">Comment</label>
+                    <textarea ngModel name="comment"  #comment="ngModel"
+                    cols="30" rows="10" required class="form-control"
+                    placeholder="Enter the Comment">
+                    </textarea>
+
+                    <div class="alert alert-danger" 
+                    *ngIf="comment.touched && comment.invalid">
+                        ** Please Enter the Comment...
+                    </div>
+
+                </div>
+
+                <br>
+                <button [disabled]="!f.valid"
+                class="btn btn-outline-success">Submit</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

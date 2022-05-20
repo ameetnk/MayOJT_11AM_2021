@@ -1,0 +1,79 @@
+
+
+<div class="container-fluid">
+    <app-header></app-header>
+
+    <br>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div>
+                <button 
+                 class="btn btn-success"
+                 (click)="onAddEmp()"
+                 >Add Employee</button>
+                <button (click)="onEdit(popUp)" 
+                class="btn btn-warning">Update Employee</button>
+                <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+                <button  (click)="onChangeStatus()" class="btn btn-info">Change Status</button>
+                           
+            
+            </div>
+    
+            <ng-template #popUp>
+
+                <!-- <h2>Pop up is generated</h2> -->
+                <app-update-employee [parentdata]="empobj" ></app-update-employee>
+                <button (click)="modalRef.hide()" class="btn btn-danger"
+                >Cancel</button>
+
+            </ng-template>
+      
+
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Action</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>status</th>
+                    <th>Creatated Date</th>
+                    <th>Updatated Date</th>
+                    <th>Country</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of EmpData | paginate: { itemsPerPage: 5, currentPage: p };index as i">
+                        <td> {{i+1}} </td>
+                        <td> <input type="radio" name="data" 
+                            (click)="onRadioClick(item)" > </td>
+                        <td> <a [routerLink]="['/empdetails',item.id]">{{item.name}} </a>  </td>
+                        <td> {{item.departmentit}} </td>
+                        <td><h5 style="text-align: center;"> 
+                            <span [ngClass]="{
+                                'badge':true, 'badge-pill':true,
+                                'badge-success':item.status.toLowerCase()=='active',
+                                'badge-warning':item.status.toLowerCase()=='inactive',
+                                'badge-danger' : item.status.toLowerCase()== 'suspend'
+    
+                            }" style="padding: 8px;" >
+                            {{item.status}}
+    
+                        </span></h5> </td>
+                        <td> {{item.createddtm | date}} </td>
+                        <td> {{item.updateddtm | date:'dd-MM-yyyy'}} </td>
+                        <td> {{item.country.cname}} </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pagination-controls class="pull-right" (pageChange)="p = $event">
+                 
+            </pagination-controls>
+	 
+
+        </div>
+
+    </div>
+
+</div>

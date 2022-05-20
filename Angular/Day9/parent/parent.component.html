@@ -1,0 +1,21 @@
+<p>parent works!</p>
+
+    <button (click)="onSend()">Send</button>
+
+<!-- <app-child1 [ParentStrData]="strdata"
+        [ParentJsonData]="myjson"
+>
+</app-child1> -->
+
+<!-- <app-child1 [ParentArrObjData]="arrObjData"></app-child1> -->
+
+<h2>Child To Parent data :: {{childTOParentstrdata}} </h2>
+
+<h2> Name:: {{childToParentJSONData.name}} </h2>
+<h2> Price:: {{childToParentJSONData.price}} </h2>
+<hr>
+<app-child2 
+(childStrEvent)="childTOParentstrdata=$event"
+(childJsonEvent)="childToParentJSONData=$event"
+>
+</app-child2>
